@@ -235,9 +235,7 @@ INSERT INTO "comment_likes" ("id", "user_id", "comment_id", "created_at") VALUES
 (17, 1, 22, '2026-08-23 20:12:56');
 
 INSERT INTO "content" ("id", "title", "slug", "description", "type", "category_id", "genre_id", "poster", "backdrop", "trailer", "rating", "year", "duration", "quality", "views", "status", "featured", "created_at", "updated_at") VALUES
-(5, 'Avatar 3 Fire and Ash 2025', 'avatar-3-fire-and-ash-2025', 'تواجه عائلة جيك ونيتيري الحزن بعد وفاة نيتيام، وتلتقي بقبيلة نافي جديدة وعدائية تُدعى (شعب الرماد)، بقيادة المحاربة النارية فارانج، بينما يتصاعد الصراع على كوكب باندورا وتظهر قضايا أخلاقية جديدة في قلب الأحداث.', 'movie', 1, NULL, '6a1a1387ee053.jpg', '', '', '7.2', 2025, 197, 'HD', 24, 'published', 0, '2026-05-29 22:28:38', '2026-07-24 08:28:25'),
-(6, 'dexter', 'dexter-4', 'Dexter Morgan thrives in two contrasting worlds: by day, he’s a meticulous blood spatter analyst for the Miami Metro Police Department;
-
+(5, 'Avatar 3 Fire and Ash 2025', 'avatar-3-fire-and-ash-2025', 'تواجه عائلة جيك ونيتيري الحزن بعد وفاة نيتيام، وتلتقي بقبيلة نافي جديدة وعدائية تُدعى (شعب الرماد)، بقيادة المحاربة النارية فارانج، بينما يتصاعد الصراع على كوكب باندورا وتظهر قضايا أخلاقية جديدة في قلب الأحداث.', 'movie', 1, NULL, '6a1a1387ee053.jpg', '', '', '7.2', 2025, 197, 'HD', 24, 'published', 0, '2026-05-29 22:28:38', '2026-07-24 08:28:25');
 INSERT INTO "content" ("id", "title", "slug", "description", "type", "category_id", "genre_id", "poster", "backdrop", "trailer", "rating", "year", "duration", "quality", "views", "status", "featured", "created_at", "updated_at") VALUES
 (94, '! Teen Titans Go', 'teen-titans-go', '', 'series', 5, 3, '6a58ec4168685.jpg', '', '', '0.0', 2013, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:35:45', '2026-07-16 14:35:45'),
 (95, 'Our Last Crusade or the Rise of a New World', 'our-last-crusade-or-the-rise-of-a-new-world', '', 'series', 3, 7, '6a58ecf7407c9.jpg', '', '', '0.0', 2020, NULL, 'HD', 3, 'published', 0, '2026-07-16 14:38:47', '2026-07-16 15:27:15'),
