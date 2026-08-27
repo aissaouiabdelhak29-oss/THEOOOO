@@ -1,4 +1,4 @@
--- PostgreSQL Migration Script
+-- PostgreSQL Migration Script - FIXED
 -- Generated from MySQL dump
 
 DROP TABLE IF EXISTS watch_history CASCADE;
@@ -94,7 +94,7 @@ CREATE TABLE content (
   quality varchar(20) DEFAULT 'HD',
   views INTEGER DEFAULT 0,
   status VARCHAR(50) DEFAULT 'draft',
-  featured tinyINTEGER DEFAULT 0,
+  featured BOOLEAN DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -102,14 +102,14 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (5, 'Avatar 3 Fire and Ash 2025', 'avatar-3-fire-and-ash-2025', 'تواجه عائلة جيك ونيتيري الحزن بعد وفاة نيتيام، وتلتقي بقبيلة نافي جديدة وعدائية تُدعى (شعب الرماد)، بقيادة المحاربة النارية فارانج، بينما يتصاعد الصراع على كوكب باندورا وتظهر قضايا أخلاقية جديدة في قلب الأحداث.', 'movie', 1, NULL, '6a1a1387ee053.jpg', '', '', '7.2', 2025, 197, 'HD', 24, 'published', 0, '2026-05-29 22:28:38', '2026-07-24 08:28:25'),
 (6, 'dexter', 'dexter-4', 'Dexter Morgan thrives in two contrasting worlds: by day, he’s a meticulous blood spatter analyst for the Miami Metro Police Department; by night, he becomes a vigilante serial killer. Driven by\r\n.....', 'series', 2, 9, '6a5e0e5dd711c.jpg', '', '', '9.0', 1900, 51, 'FHD', 79, 'published', 1, '2026-05-30 20:26:44', '2026-08-24 10:29:10'),
 (7, 'Death Note Relight 1: Visions of a God 2007', 'death-note-relight-1-visions-of-a-god-2007', '', 'movie', 3, NULL, '6a1b802668aa6.jpg', '', '', '7.4', 2007, 130, 'HD', 7, 'published', 0, '2026-05-31 00:26:14', '2026-07-24 08:29:39'),
-(8, 'Death Note 2006', 'death-note-2006', 'Light Yagami, a brilliant student disillusioned with the world\'s injustices, stumbles upon a mysterious Death Note, left behind by a rogue Shinigami. This powerful notebook grants him the ability to ki\r\n.....', 'series', 3, 6, '6a1b822b9f19c.jpg', '', '', '8.8', 2006, 23, 'HD', 2, 'published', 0, '2026-05-31 00:34:51', '2026-08-24 10:30:47'),
+(8, 'Death Note 2006', 'death-note-2006', 'Light Yagami, a brilliant student disillusioned with the world''s injustices, stumbles upon a mysterious Death Note, left behind by a rogue Shinigami. This powerful notebook grants him the ability to ki\r\n.....', 'series', 3, 6, '6a1b822b9f19c.jpg', '', '', '8.8', 2006, 23, 'HD', 2, 'published', 0, '2026-05-31 00:34:51', '2026-08-24 10:30:47'),
 (9, 'Game of Thrones', 'game-of-thrones', 'Seven powerful families vie for dominance over the legendary realm of Westeros, igniting a brutal conflict fueled by betrayal and ambition. As alliances shift and blood is spilled, an ancient menace\r\n....', 'series', 2, 6, '6a1b860e9595a.jpg', '', '', '9.2', 2010, 60, 'HD', 18, 'published', 1, '2026-05-31 00:38:26', '2026-08-24 10:29:52'),
-(10, 'Breaking Bad', 'breaking-bad', 'Walter White, a high school chemistry teacher in New Mexico, faces a life-altering diagnosis of Stage III cancer, leaving him with just two years to live. Stricken by fear for his family\'s financial stability, he\r\n......', 'series', 2, 9, '6a1b85627f8c2.jpg', '', '', '9.5', 2007, 48, 'HD', 12, 'published', 1, '2026-05-31 00:48:34', '2026-08-24 10:31:20'),
+(10, 'Breaking Bad', 'breaking-bad', 'Walter White, a high school chemistry teacher in New Mexico, faces a life-altering diagnosis of Stage III cancer, leaving him with just two years to live. Stricken by fear for his family''s financial stability, he\r\n......', 'series', 2, 9, '6a1b85627f8c2.jpg', '', '', '9.5', 2007, 48, 'HD', 12, 'published', 1, '2026-05-31 00:48:34', '2026-08-24 10:31:20'),
 (11, 'House of the Dragon', 'house-of-the-dragon', 'At the zenith of their reign, the Targaryens command over 15 dragons, but such heights often foreshadow downfall. King Viserys disrupts a longstanding tradition by designating his daughter\r\n......', 'series', 2, 6, '6a1b8704279cd.jpg', '', '', '8.3', 2022, 60, 'HD', 1, 'published', 0, '2026-05-31 00:55:32', '2026-08-24 10:32:08'),
 (12, 'A Knight of the Seven Kingdoms', 'a-knight-of-the-seven-kingdoms', 'Long before the saga of Game of Thrones, two unexpected champions roamed the land of Westeros: the brave yet innocent knight, Ser Duncan the Tall, and his small but spirited squire, Egg. I\r\n...', 'series', 2, 6, '6a1b8f1e10e1c.jpg', '', '', '8.7', 2026, 59, 'FHD', 10, 'published', 0, '2026-05-31 00:59:55', '2026-08-24 10:33:21'),
 (13, 'Squid Game', 'squid-game', 'Cash-strapped individuals are lured by a mysterious invitation to participate in a series of childhood games, promising a life-changing reward. However, the competition turns sinister as the stakes\r\n.........', 'series', 2, 6, '6a1b8e8b24f82.jpg', '', '', '7.9', 2021, 60, 'FHD', 25, 'published', 0, '2026-05-31 01:04:51', '2026-08-24 10:34:07'),
 (14, 'The Boys 2019', 'the-boys-2019', 'A band of vigilantes, dubbed “The Boys,” embarks on a mission to expose and dismantle corrupt superheroes who abuse their powers. Armed with sheer determination and a gritty, no-holds-barred\r\n.......', 'series', 2, 1, '6a1b900ce8671.jpg', '', '', '8.5', 2019, 60, 'HD', 1, 'published', 0, '2026-05-31 01:13:49', '2026-08-24 10:35:11'),
-(15, 'Invincible', 'invincible', 'Mark Grayson leads an ordinary teenage life, but there\'s a twist: his father is the world\'s mightiest superhero. As he approaches his seventeenth birthday, Mark discovers he possesses superhuman\r\n......', 'series', 5, 6, '6a1b8fb55abdc.jpg', '', '', '8.7', 2021, 49, 'FHD', 4, 'published', 0, '2026-05-31 01:15:26', '2026-08-24 10:35:51'),
+(15, 'Invincible', 'invincible', 'Mark Grayson leads an ordinary teenage life, but there''s a twist: his father is the world''s mightiest superhero. As he approaches his seventeenth birthday, Mark discovers he possesses superhuman\r\n......', 'series', 5, 6, '6a1b8fb55abdc.jpg', '', '', '8.7', 2021, 49, 'FHD', 4, 'published', 0, '2026-05-31 01:15:26', '2026-08-24 10:35:51'),
 (16, 'Rick and Morty', 'rick-and-morty', 'Rick, a brilliant yet unstable scientist, has rekindled his relationship with his family, particularly his impressionable grandson, Morty. Together, they embark on wild escapades across the cosmos and\r\n.........', 'series', 5, 8, '6a1b8f4d949ba.jpg', '', '', '8.9', 2013, 23, 'HD', 1, 'published', 0, '2026-05-31 01:17:19', '2026-08-24 10:36:29'),
 (17, 'The Office', 'the-office', 'Set in the bustling Scranton branch of the fictional Dunder Mifflin Paper Company, the show humorously captures the mundane yet quirky lives of its employees. Through a mockumentary format\r\n.........', 'series', 2, 9, '6a1b8e7b83976.jpg', '', '', '8.9', 2005, 20, 'HD', 5, 'published', 0, '2026-05-31 01:20:01', '2026-08-24 10:36:56'),
 (18, 'Gravity Falls', 'gravity-falls', 'Dipper and Mabel Pines, a spirited twin duo, embark on a thrilling summer escapade in the enigmatic town of Gravity Falls, Oregon. Tasked with assisting their great-uncle Stan at his quirky tourist\r\n.....', 'series', 5, 8, '6a1b923225080.jpg', '', '', '8.9', 2012, 23, 'FHD', 2, 'published', 0, '2026-05-31 01:43:14', '2026-08-24 10:37:26'),
@@ -169,7 +169,7 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (78, 'Tomb Raider King', 'tomb-raider-king', '', 'series', 3, NULL, '6a58d87bc6011.jpg', '', '', '7.7', 2026, NULL, 'HD', 2, 'published', 0, '2026-07-16 13:11:23', '2026-07-28 15:23:23'),
 (79, 'The Simpsons', 'the-simpsons', '', 'series', 5, NULL, '6a58da21435aa.jpg', '', '', '8.6', 1989, NULL, 'HD', 1, 'published', 0, '2026-07-16 13:18:25', '2026-07-16 13:19:38'),
 (80, 'Moana', 'moana', '', 'movie', 1, NULL, '6a58dd76e1eac.jpg', '', '', '5.7', 2026, 115, 'HD', 2, 'published', 0, '2026-07-16 13:32:38', '2026-07-24 08:21:37'),
-(81, 'I\'m Not Afraid', 'i-m-not-afraid', '', 'series', 2, NULL, '6a58dffed2e18.png', '', '', '0.0', 2026, NULL, 'HD', 2, 'published', 0, '2026-07-16 13:43:26', '2026-07-26 16:15:05'),
+(81, 'I''m Not Afraid', 'i-m-not-afraid', '', 'series', 2, NULL, '6a58dffed2e18.png', '', '', '0.0', 2026, NULL, 'HD', 2, 'published', 0, '2026-07-16 13:43:26', '2026-07-26 16:15:05'),
 (82, 'Adventure Time: Side Quests', 'adventure-time-side-quests', '', 'series', 5, NULL, '6a58e0fd8ac90.jpg', '', '', '0.0', 2026, NULL, 'HD', 1, 'published', 0, '2026-07-16 13:47:41', '2026-07-17 10:33:11'),
 (83, 'KILL BLUE', 'kill-blue', '', 'series', 3, NULL, '6a58e1a410296.jpg', '', '', '0.0', 2026, NULL, 'HD', 0, 'published', 0, '2026-07-16 13:50:27', '2026-07-16 13:50:39'),
 (84, 'Mating Season', 'mating-season', '', 'series', 5, NULL, '6a58e42fe1c69.jpg', '', '', '0.0', 2026, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:01:19', '2026-07-16 14:01:19'),
@@ -177,7 +177,7 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (86, 'Rooster Fighter', 'rooster-fighter', '', 'series', 3, 6, '6a58e590dd728.jpg', '', '', '0.0', 2026, NULL, 'HD', 1, 'published', 0, '2026-07-16 14:06:43', '2026-07-16 14:09:04'),
 (87, 'Farming Life in Another World', 'farming-life-in-another-world', '', 'series', 3, NULL, '6a58e68fb6b3d.jpg', '', '', '0.0', 2023, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:11:27', '2026-07-16 14:11:27'),
 (88, '?!  BUCCHIGIRI', 'bucchigiri', '', 'series', 3, NULL, '6a58e77782c89.jpg', '', '', '0.0', 2024, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:15:19', '2026-07-16 14:15:19'),
-(89, 'World\'s End Harem', 'world-s-end-harem', '', 'series', 3, 6, '6a58e81a53b0f.jpg', '', '', '0.0', 2022, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:18:02', '2026-07-16 14:18:02'),
+(89, 'World''s End Harem', 'world-s-end-harem', '', 'series', 3, 6, '6a58e81a53b0f.jpg', '', '', '0.0', 2022, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:18:02', '2026-07-16 14:18:02'),
 (90, 'Helluva Boss', 'helluva-boss', '', 'series', 5, NULL, '6a58e946aeb72.jpg', '', '', '0.0', 2020, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:23:02', '2026-07-16 14:23:02'),
 (91, 'Hazbin Hotel', 'hazbin-hotel', '', 'series', 5, NULL, '6a58e9ca87ae3.jpg', '', '', '0.0', 2024, NULL, 'HD', 1, 'published', 0, '2026-07-16 14:25:14', '2026-07-16 14:26:29'),
 (92, 'Teen Titans', 'teen-titans', '', 'series', 5, 8, '6a58eb52bc9d1.jpg', '', '', '0.0', 2003, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:31:46', '2026-07-16 14:31:46'),
@@ -192,12 +192,12 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (100, 'قناة كرتون نتورك بالعربية بث مباشر', 'item-1784215377', '', 'series', NULL, NULL, '6a58f751900c0.jpg', '', '', '0.0', 2026, NULL, 'HD', 4, 'published', 0, '2026-07-16 15:22:57', '2026-07-27 15:43:45'),
 (101, 'Adventure Time', 'adventure-time', '', 'series', 5, NULL, '6a59f545445e0.jpg', '', '', '0.0', 2010, NULL, 'HD', 7, 'published', 0, '2026-07-17 08:24:58', '2026-07-17 10:51:05'),
 (102, 'Jackie Chan Adventures', 'jackie-chan-adventures', '', 'series', 5, NULL, '6a59f6234cc1f.jpg', '', '', '0.0', 2000, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:39:03', '2026-07-17 09:30:11'),
-(103, 'JoJo\'s Bizarre Adventure', 'jojo-s-bizarre-adventure', '', 'series', 3, NULL, '6a59f6118f47d.jpg', '', '', '0.0', 2012, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:40:26', '2026-07-17 09:29:53'),
+(103, 'JoJo''s Bizarre Adventure', 'jojo-s-bizarre-adventure', '', 'series', 3, NULL, '6a59f6118f47d.jpg', '', '', '0.0', 2012, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:40:26', '2026-07-17 09:29:53'),
 (104, 'Adventure Time: Fionna & Cake', 'adventure-time-fionna-cake', '', 'series', 5, 8, '6a59f6042d919.jpg', '', '', '0.0', 2023, NULL, 'HD', 3, 'published', 0, '2026-07-17 08:42:14', '2026-07-20 12:04:07'),
 (105, 'The Marvelous Misadventures of Flapjack', 'the-marvelous-misadventures-of-flapjack', '', 'series', 5, NULL, '6a59f5a1951a3.jpg', '', '', '0.0', 2008, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:43:42', '2026-07-17 09:28:01'),
 (106, 'The Adventures of Tintin', 'the-adventures-of-tintin', '', 'series', 5, NULL, '6a59f57bb814e.jpg', '', '', '0.0', 1991, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:44:50', '2026-07-17 09:27:24'),
 (107, 'Batman: The Animated Series', 'case-closed-detective-conan', '', 'series', 5, 8, '6a59f456d66eb.jpg', '', '', '0.0', 1992, NULL, 'HD', 16, 'published', 0, '2026-07-17 08:48:46', '2026-07-19 15:30:45'),
-(108, '? What\'s New, Scooby-Doo', 'what-s-new-scooby-doo', '', 'series', 5, NULL, '6a59f513a48d1.jpg', '', '', '0.0', 2002, NULL, 'HD', 1, 'published', 0, '2026-07-17 08:55:32', '2026-07-17 09:25:40'),
+(108, '? What''s New, Scooby-Doo', 'what-s-new-scooby-doo', '', 'series', 5, NULL, '6a59f513a48d1.jpg', '', '', '0.0', 2002, NULL, 'HD', 1, 'published', 0, '2026-07-17 08:55:32', '2026-07-17 09:25:40'),
 (109, 'Scooby-Doo! Mystery Incorporated', 'scooby-doo-mystery-incorporated', '', 'series', 5, NULL, '6a59f4c2c6dd7.jpg', '', '', '0.0', 2010, NULL, 'HD', 0, 'published', 0, '2026-07-17 08:57:05', '2026-07-17 09:24:19'),
 (110, '? Scooby-Doo and Guess Who', 'scooby-doo-and-guess-who', '', 'series', 5, NULL, '6a59f498a72b7.jpg', '', '', '0.0', 2019, NULL, 'HD', 0, 'published', 0, '2026-07-17 09:00:07', '2026-07-20 12:03:53'),
 (111, 'The New Batman Adventures', 'the-new-batman-adventures', '', 'series', 5, NULL, '6a59f47043517.jpg', '', '', '0.0', 1997, NULL, 'HD', 2, 'published', 0, '2026-07-17 09:06:09', '2026-07-19 16:26:41'),
@@ -210,7 +210,7 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (118, 'blue lock', 'blue-lock', '', 'series', 3, 6, '6a60c61226b79.jpg', '', '', '0.0', 2022, NULL, 'HD', 0, 'published', 0, '2026-07-22 13:30:58', '2026-07-22 13:30:58'),
 (119, 'BLUE LOCK THE MOVIE -EPISODE NAGI', 'blue-lock-the-movie-episode-nagi', '', 'series', 3, 6, '6a60c6ced74b8.jpg', '', '', '0.0', 2024, NULL, 'HD', 0, 'published', 0, '2026-07-22 13:34:06', '2026-07-22 13:34:06'),
 (120, 'Re: ZERO, Starting Life in Another World', 're-zero-starting-life-in-another-world', '', 'series', 3, NULL, '6a60cafdb0762.jpg', '', '', '0.0', 2016, NULL, 'HD', 0, 'published', 0, '2026-07-22 13:51:57', '2026-07-22 13:51:57'),
-(121, 'Frieren: Beyond Journey\'s End', 'frieren-beyond-journey-s-end', '', 'series', 3, NULL, '6a60cc6ac2e6e.jpg', '', '', '0.0', 2023, NULL, 'HD', 0, 'published', 0, '2026-07-22 13:58:02', '2026-07-22 13:58:02'),
+(121, 'Frieren: Beyond Journey''s End', 'frieren-beyond-journey-s-end', '', 'series', 3, NULL, '6a60cc6ac2e6e.jpg', '', '', '0.0', 2023, NULL, 'HD', 0, 'published', 0, '2026-07-22 13:58:02', '2026-07-22 13:58:02'),
 (122, 'Regular Show', 'regular-show', '', 'series', 5, NULL, '6a60cce4e1fb3.jpg', '', '', '0.0', 2010, NULL, 'HD', 0, 'published', 0, '2026-07-22 14:00:05', '2026-07-28 15:22:44'),
 (123, 'Code Geass: Lelouch of the Rebellion', 'code-geass-lelouch-of-the-rebellion', '', 'series', 3, NULL, '6a60cda7aba98.jpg', '', '', '0.0', 2016, NULL, 'HD', 0, 'published', 0, '2026-07-22 14:03:20', '2026-07-22 14:03:30'),
 (124, 'The Shawshank Redemption', 'the-shawshank-redemption', '', 'movie', 1, NULL, '6a631962095f9.jpg', '', '', '9.3', 1994, 142, 'HD', 4, 'published', 0, '2026-07-24 07:50:57', '2026-08-20 17:31:03'),
@@ -319,11 +319,11 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (233, 'The Face of Another', 'the-face-of-another', '', 'movie', 1, 5, '6a8303e5d0bbf.jpg', '', '', '8.0', 1966, 122, 'HD', 0, 'published', 0, '2026-08-17 12:51:50', '2026-08-17 12:51:50'),
 (234, 'The Twilight Zone', 'the-twilight-zone', '', 'series', 2, 2, '6a8305a0052ca.jpg', '', '', '9.0', 1959, 50, 'HD', 0, 'published', 0, '2026-08-17 12:59:12', '2026-08-17 12:59:12'),
 (235, 'Primal Fear', 'primal-fear', '', 'movie', 1, 2, '6a83074b8b9b2.jpg', '', '', '7.9', 1996, 129, 'HD', 0, 'published', 0, '2026-08-17 13:06:20', '2026-08-17 13:06:28'),
-(236, 'One Battle After Another', 'one-battle-after-another', 'Disillusioned ex-revolutionary Bob lives in a haze of paranoia, off the grid with his determined daughter, Willa. Their quiet life is shattered when Bob\'s long-time foe reemerges after 16 years, and Willa\r\n.....', 'movie', 1, 1, '6a8308207fa91.jpg', '', '', '7.7', 2025, 164, 'HD', 0, 'published', 0, '2026-08-17 13:09:53', '2026-08-24 10:23:17'),
+(236, 'One Battle After Another', 'one-battle-after-another', 'Disillusioned ex-revolutionary Bob lives in a haze of paranoia, off the grid with his determined daughter, Willa. Their quiet life is shattered when Bob''s long-time foe reemerges after 16 years, and Willa\r\n.....', 'movie', 1, 1, '6a8308207fa91.jpg', '', '', '7.7', 2025, 164, 'HD', 0, 'published', 0, '2026-08-17 13:09:53', '2026-08-24 10:23:17'),
 (237, 'The Machinist', 'the-machinist', 'In \"The Machinist,\" Trevor, a sleep-deprived lathe operator, grapples with the haunting effects of insomnia that blur the lines between reality and delusion. As he navigates his daily life, he begins to\r\n..........', 'movie', 1, 2, '6a8308fa38def.jpg', '', '', '7.7', 2004, 101, 'HD', 0, 'published', 0, '2026-08-17 13:13:30', '2026-08-24 10:22:40'),
-(238, 'Memories of Murder', 'memories-of-murder', 'Set in the late 1980s, \"Memories of Murder\" follows two detectives in a rural South Korean province as they grapple with the country\'s first string of heinous rape and murder cases. As they delve deeper into\r\n......', 'movie', 1, 2, '6a8309dcac1b9.jpg', '', '', '8.1', 2003, 131, 'HD', 3, 'published', 0, '2026-08-17 13:17:17', '2026-08-24 10:21:51'),
+(238, 'Memories of Murder', 'memories-of-murder', 'Set in the late 1980s, \"Memories of Murder\" follows two detectives in a rural South Korean province as they grapple with the country''s first string of heinous rape and murder cases. As they delve deeper into\r\n......', 'movie', 1, 2, '6a8309dcac1b9.jpg', '', '', '8.1', 2003, 131, 'HD', 3, 'published', 0, '2026-08-17 13:17:17', '2026-08-24 10:21:51'),
 (239, 'The Sixth Sense', 'the-sixth-sense', 'After a shocking incident, child therapist Malcolm Crowe encounters a nine-year-old boy named Cole Sear, who harbors a chilling mystery. As Malcolm tries to help him, he discovers that Cole\r\n......', 'movie', 1, 2, '6a8595deed5f4.jpg', '', '', '8.2', 1999, 107, 'HD', 0, 'published', 0, '2026-08-19 11:39:11', '2026-08-24 10:21:11'),
-(240, 'Incendies', 'incendies', 'Twins Jeanne and Simon embark on a profound journey to the Middle East after their mother’s dying request reveals their complex heritage. Based on Wajdi Mouawad\'s celebrated play, Incendies\r\n.....', 'movie', 1, 2, '6a8596a074168.jpg', '', '', '8.3', 2010, 131, 'HD', 1, 'published', 0, '2026-08-19 11:42:24', '2026-08-24 10:26:30'),
+(240, 'Incendies', 'incendies', 'Twins Jeanne and Simon embark on a profound journey to the Middle East after their mother’s dying request reveals their complex heritage. Based on Wajdi Mouawad''s celebrated play, Incendies\r\n.....', 'movie', 1, 2, '6a8596a074168.jpg', '', '', '8.3', 2010, 131, 'HD', 1, 'published', 0, '2026-08-19 11:42:24', '2026-08-24 10:26:30'),
 (241, 'The Game', 'the-game', 'In celebration of his birthday, San Francisco banker Nicholas Van Orton, a brilliant yet emotionally distant individual, is gifted an extraordinary present by his estranged younger brother, Conrad: a\r\n.....', 'movie', 1, 2, '6a8597690855e.jpg', '', '', '7.7', 1997, 129, 'HD', 0, 'published', 0, '2026-08-19 11:45:45', '2026-08-24 10:19:54'),
 (242, 'Prisoners', 'prisoners', 'Keller Dover endures the ultimate parental terror when his six-year-old daughter, Anna, disappears alongside her friend, Joy. As anxiety escalates with the passing hours, he becomes increasingly\r\n......', 'movie', 1, 2, '6a85988093a54.jpg', '', '', '8.2', 2013, 155, 'HD', 0, 'published', 0, '2026-08-19 11:50:24', '2026-08-24 10:19:16'),
 (243, 'Prison School', 'prison-school', 'Once a prestigious all-girls boarding school on the fringes of Tokyo, Hachimitsu Private Academy has recently changed its policy to admit boys. On his inaugural day, Kiyoshi Fujino realizes he’s among just\r\n.....', 'series', 3, 3, '6a85999428717.jpg', '', '', '7.5', 2015, 24, 'HD', 3, 'published', 0, '2026-08-19 11:55:00', '2026-08-24 10:18:38'),
@@ -332,8 +332,8 @@ INSERT INTO content (id, title, slug, description, type, category_id, genre_id, 
 (246, 'A Ghost Story', 'a-ghost-story', 'After passing away unexpectedly, a ghost draped in a white sheet haunts his suburban residence, longing to comfort his grieving wife. However, he soon discovers that his spectral existence renders hi\r\n.....', 'movie', 1, 2, '6a859d80998f7.jpg', '', '', '6.8', 2017, 92, 'HD', 0, 'published', 0, '2026-08-19 12:11:44', '2026-08-24 10:14:54'),
 (247, 'Dhoom', 'dhoom', 'A slick gang of bikers, led by the suave and overconfident Kabir, wreaks havoc in Mumbai with a series of high-stakes heists. To tackle this daring crew, ACP Jai Dixit is assigned to the case and\r\n.....', 'movie', 1, 1, '6a873ade9a4df.webp', '', '', '6.7', 2004, 129, 'HD', 0, 'published', 0, '2026-08-20 17:35:26', '2026-08-24 10:13:26'),
 (248, 'Dhoom 2', 'dhoom-2', 'Jai and Ali are back, embarking on a thrilling chase to capture a cunning international art thief. Set against the vibrant backdrop of Mumbai, this elusive criminal has set his sights on a series of\r\n.....', 'movie', 1, 1, '6a873b5d84fe7.webp', '', '', '6.6', 2006, 152, 'HD', 1, 'published', 0, '2026-08-20 17:37:33', '2026-08-24 10:13:02'),
-(249, 'Dhoom 3', 'dhoom-3', 'A circus performer, skilled in magic and acrobatics, embarks on a daring mission to avenge his father\'s demise by targeting a corrupt bank owner through a series of audacious heists. As he orchestrat\r\n.....', 'movie', 1, 1, '6a873c1761965.webp', '', '', '5.5', 2013, 172, 'HD', 3, 'published', 0, '2026-08-20 17:40:39', '2026-08-24 15:06:41'),
-(250, 'Yellow Eyes', 'yellow-eyes', 'A young couple moves into a house they\'ve inherited, unaware that a sinister artifact inside holds the trapped spirit of a formidable demon. When the husband becomes possessed by the entity, his wife is\r\n...', 'movie', 1, 4, '6a8822d3cedca.webp', '', '', '4.2', 2026, 87, 'HD', 1, 'published', 0, '2026-08-21 10:05:08', '2026-08-24 10:12:03'),
+(249, 'Dhoom 3', 'dhoom-3', 'A circus performer, skilled in magic and acrobatics, embarks on a daring mission to avenge his father''s demise by targeting a corrupt bank owner through a series of audacious heists. As he orchestrat\r\n.....', 'movie', 1, 1, '6a873c1761965.webp', '', '', '5.5', 2013, 172, 'HD', 3, 'published', 0, '2026-08-20 17:40:39', '2026-08-24 15:06:41'),
+(250, 'Yellow Eyes', 'yellow-eyes', 'A young couple moves into a house they''ve inherited, unaware that a sinister artifact inside holds the trapped spirit of a formidable demon. When the husband becomes possessed by the entity, his wife is\r\n...', 'movie', 1, 4, '6a8822d3cedca.webp', '', '', '4.2', 2026, 87, 'HD', 1, 'published', 0, '2026-08-21 10:05:08', '2026-08-24 10:12:03'),
 (251, 'Lanterns', 'lanterns', 'John Stewart, a rookie officer from beyond the stars, finds himself partnered with Hal Jordan, a seasoned Lantern whose reputation precedes him. Their routine patrol takes a grim turn when they land\r\n....', 'series', 2, 1, '6a8823d66210a.webp', '', '', '8.1', 2026, 60, 'HD', 0, 'published', 0, '2026-08-21 10:09:26', '2026-08-24 10:11:11'),
 (252, 'prison break', 'prison-break', 'An innocent man finds himself on death row, victim of a political conspiracy. His only chance for survival lies with his brother, who hatches a daring plan to ensure he ends up in the same prison. Wit\r\n....', 'series', 2, 1, '6a8894e2cabae.jpg', '', '', '8.5', 2005, 44, 'HD', 7, 'published', 0, '2026-08-21 18:11:46', '2026-08-24 10:10:37'),
 (253, 'The Godfather Part III', 'the-godfather-part-iii', 'As he navigates the complexities of legitimizing his criminal empire in 1979 New York and Italy, the seasoned mafia leader Michael Corleone strives for redemption for his past misdeeds. Alongside t\r\n....', 'movie', 1, 9, '6a8ad4a530c90.webp', '', '', '7.5', 1990, 162, 'HD', 1, 'published', 0, '2026-08-23 11:08:23', '2026-08-24 10:10:08'),
@@ -410,7 +410,7 @@ CREATE TABLE episode_servers (
   server_name VARCHAR(50) NOT NULL,
   embed_url text NOT NULL,
   quality varchar(20) DEFAULT 'HD',
-  is_default tinyINTEGER DEFAULT 0,
+  is_default BOOLEAN DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO episode_servers (id, episode_id, server_name, embed_url, quality, is_default, created_at) VALUES
@@ -571,7 +571,7 @@ CREATE TABLE user_achievements (
   id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
   rank_id INTEGER NOT NULL,
-  unlocked_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  unlocked_at TIMESTAMP DEFAULT current_timestamp()
 );
 INSERT INTO user_achievements (id, user_id, rank_id, unlocked_at) VALUES
 (9, 1, 1, '2026-07-26 08:10:12'),
@@ -582,7 +582,7 @@ CREATE TABLE user_tokens (
   id INTEGER NOT NULL,
   user_id INTEGER NOT NULL,
   token varchar(255) NOT NULL,
-  expires_at datetime NOT NULL
+  expires_at TIMESTAMP NOT NULL
 );
 INSERT INTO user_tokens (id, user_id, token, expires_at) VALUES
 (23, 1, '47ef0b99ecc23e4f89006d8aa629e01875bcf3dc249f1a4225102ff9e2a7eb52', '2026-09-25 07:03:04');
@@ -592,7 +592,7 @@ CREATE TABLE video_servers (
   server_name VARCHAR(50) NOT NULL,
   embed_url text NOT NULL,
   quality varchar(20) DEFAULT 'HD',
-  is_default tinyINTEGER DEFAULT 0,
+  is_default BOOLEAN DEFAULT 0,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO video_servers (id, content_id, server_name, embed_url, quality, is_default, created_at) VALUES
