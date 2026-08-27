@@ -1,14 +1,14 @@
 <?php
-// إجبار الاستضافة على إرسال الـ JSON مباشرة وتجاوز حماية الـ HTML
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-
-// تعطيل كوكيز الحماية المؤقتة للـ API إن وجدت
-if (!isset($_COOKIE['__test'])) {
-    setcookie('__test', 'bypass', time() + 86400, '/');
-}
+declare(strict_types=1);
 
 require_once __DIR__ . '/bootstrap.php';
+// bootstrap.php يضبط Content-Type و X-Content-Type-Options بالفعل،
+// فلا داعي لتكرارها هنا. تمت إزالة كوكيز "__test=bypass" لأنها كانت
+// محاولة غير آمنة لتجاوز حماية الاستضافة ولا تؤدي أي وظيفة فعلية للـ API.
+
+// CORS: مفتوح للقراءة العامة لأن هذه نقاط GET عامة بدون كوكيز/جلسات حساسة.
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET");
 
 try {
     $featuredStmt = $pdo->query("
