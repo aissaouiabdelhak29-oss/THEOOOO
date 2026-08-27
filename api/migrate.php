@@ -3,19 +3,29 @@ declare(strict_types=1);
 header('Content-Type: text/plain; charset=utf-8');
 set_time_limit(300);
 
-require_once __DIR__ . '/../includes/db.php';
+require_once __DIR__ . '/../includes/auth.php';
+
+// حماية: تشغيل SQL كامل من ملف على قاعدة بيانات الإنتاج يجب أن يقتصر على المشرف
+// مع تأكيد صريح، لمنع أي زائر من إعادة تشغيل الترحيل عشوائياً.
+requireAdmin();
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || ($_POST['confirm'] ?? '') !== 'YES_RUN_MIGRATION') {
+    http_response_code(400);
+    exit(
+        "هذا السكربت ينفذ migrate_postgres.sql بالكامل على قاعدة البيانات الحالية.\n" .
+        "لتشغيله فعلاً، أرسل طلب POST يحتوي confirm=YES_RUN_MIGRATION\n"
+    );
+}
 
 $sqlFile = __DIR__ . '/migrate_postgres.sql';
 
 if (!file_exists($sqlFile)) {
-    echo "ERROR: migrate_postgres.sql not found\n";
-    exit;
+    exit("ERROR: migrate_postgres.sql not found\n");
 }
 
 $sql = file_get_contents($sqlFile);
 if ($sql === false) {
-    echo "ERROR: Cannot read migrate_postgres.sql\n";
-    exit;
+    exit("ERROR: Cannot read migrate_postgres.sql\n");
 }
 
 // Split SQL into statements by semicolons, but be careful with strings
