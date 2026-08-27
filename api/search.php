@@ -23,14 +23,16 @@ try {
         LEFT JOIN genres g ON c.genre_id = g.id
         WHERE c.status = 'published'
         AND (
-            c.title LIKE ?
-            OR c.description LIKE ?
+            c.title LIKE ? ESCAPE '\\'
+            OR c.description LIKE ? ESCAPE '\\'
         )
         ORDER BY c.views DESC, c.created_at DESC
         LIMIT 30
     ");
 
-    $like = '%' . $query . '%';
+    // تهريب رموز LIKE الخاصة (% و _) حتى لا يتحكم المستخدم بنمط البحث
+    $escaped = str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $query);
+    $like = '%' . $escaped . '%';
 
     $stmt->execute([$like, $like]);
 
