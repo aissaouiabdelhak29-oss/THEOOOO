@@ -6,7 +6,7 @@ set_time_limit(300);
 
 require_once __DIR__ . '/../includes/db.php';
 
-$sqlFile = __DIR__ . '/yuki_postgresql_import_fixed.sql';
+$sqlFile = __DIR__ . '/yuki_postgresql_import.sql';
 
 if (!file_exists($sqlFile)) {
     exit("ERROR: ملف قاعدة البيانات غير موجود: $sqlFile\n");
