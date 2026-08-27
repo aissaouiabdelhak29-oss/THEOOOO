@@ -202,11 +202,6 @@ CREATE INDEX idx_video_servers_content ON video_servers(content_id);
 CREATE INDEX idx_watch_history_user ON watch_history(user_id);
 CREATE INDEX idx_watch_history_content ON watch_history(content_id);
 CREATE INDEX idx_watch_history_user_content ON watch_history(user_id, content_id);
-INSERT INTO "badges" ("id", "code_name", "title", "description", "icon", "points_reward") VALUES
-(1, 'founder', 'عضو مؤسس', 'يُمنح للأعضاء الأوائل في منصة Yuki', 'fa-crown', 100),
-(2, 'active_watcher', 'مشاهد نشط', 'يُمنح لمن تابع العديد من الحلقات والأفلام', 'fa-fire', 50),
-(3, 'comment_pro', 'معلق مميز', 'يُمنح للأعضاء المتفاعلين في قسم التعليقات', 'fa-star', 30),
-(4, 'collector', 'جامع الأوسمة', 'يُمنح للأعضاء الذين جمعوا إنجازات متعددة', 'fa-trophy', 150);
 
 INSERT INTO "categories" ("id", "name", "slug", "icon", "created_at") VALUES
 (1, 'أفلام', 'movies', 'film', '2026-06-27 16:18:54'),
@@ -215,27 +210,55 @@ INSERT INTO "categories" ("id", "name", "slug", "icon", "created_at") VALUES
 (4, 'وثائقي', 'documentary', 'book', '2026-06-27 16:18:54'),
 (5, 'كرتون', 'cartoon', 'smile', '2026-06-27 16:18:54');
 
-INSERT INTO "comments" ("id", "user_id", "item_id", "comment_text", "likes_count", "created_at") VALUES
-(20, 1, 6, 'Hi', 1, '2026-07-26 16:18:10'),
-(10, 9, 31, 'اهلين', 2, '2026-07-12 16:28:56'),
-(8, 1, 31, 'هلا', 2, '2026-07-12 16:06:54'),
-(15, 1, 107, 'اععععععععععععععععععععععععع', 1, '2026-07-17 10:55:30'),
-(16, 9, 72, 'jjjjj', 0, '2026-07-19 17:31:51'),
-(17, 1, 114, 'you', 0, '2026-07-21 17:11:57'),
-(22, 1, 255, 'Alpha', 1, '2026-08-23 20:12:44');
+INSERT INTO "genres" ("id", "name", "slug", "created_at") VALUES
+(1, 'أكشن', 'action', '2026-06-27 16:18:54'),
+(2, 'دراما', 'drama', '2026-06-27 16:18:54'),
+(3, 'كوميديا', 'comedy', '2026-06-27 16:18:54'),
+(4, 'رعب', 'horror', '2026-06-27 16:18:54'),
+(5, 'خيال علمي', 'sci-fi', '2026-06-27 16:18:54'),
+(6, 'إثارة', 'thriller', '2026-06-27 16:18:54'),
+(7, 'رومانسي', 'romance', '2026-06-27 16:18:54'),
+(8, 'مغامرة', 'adventure', '2026-06-27 16:18:54'),
+(9, 'جريمة', 'crime', '2026-06-27 16:18:54'),
+(10, 'عائلي', 'family', '2026-06-27 16:18:54');
 
-INSERT INTO "comment_likes" ("id", "user_id", "comment_id", "created_at") VALUES
-(6, 9, 8, '2026-07-12 16:07:54'),
-(10, 1, 8, '2026-07-12 16:30:51'),
-(8, 9, 10, '2026-07-12 16:29:09'),
-(9, 1, 10, '2026-07-12 16:30:48'),
-(12, 1, 11, '2026-07-12 20:01:48'),
-(13, 1, 15, '2026-07-17 10:55:36'),
-(14, 1, 20, '2026-07-26 16:18:22'),
-(17, 1, 22, '2026-08-23 20:12:56');
+INSERT INTO "users" ("id", "username", "email", "google_id", "facebook_id", "password", "avatar", "role", "status", "created_at", "updated_at", "membership_type", "xp", "level", "points") VALUES
+(1, 'Yuki', 'aissaoui.abdelhak.29@gmail.com', NULL, NULL, '$2y$10$4QjOums2YiDzONuzDj9lyezZtSRqv.Olbfq1dujjHRiIBB9JwFyye', '6a4126e1db4c4.jpg', 'admin', 'active', '2026-06-27 16:18:54', '2026-08-25 10:20:46', 'vip', 10003674, 100037, 9999999),
+(10, 'Yas', 'yasserhalawa22@gmail.com', NULL, NULL, '$2y$10$XnKvs38XHJ5qxGYcjOAC3OHHt1Z26BZxAcOlbup7AoklbU4kEdFp2', '6a64f02c6067a.webp', 'user', 'active', '2026-07-25 17:19:17', '2026-07-27 15:39:47', 'vip', 0, 1, 0),
+(20, 'BAYZA HACKER', 'hakim112254@gmail.com', NULL, NULL, '$2y$10$OpwQLv9BSJqUHjuRZDcTB.n5mL1OwEZfBRl6hjD1evWPpwtHUQYTO', 'default-avatar.png', 'user', 'active', '2026-08-05 13:59:03', '2026-08-17 15:41:14', 'vip', 90, 1, 0),
+(23, 'user', 'skir.skir.2900@gmail.com', NULL, NULL, '$2y$10$bEB0gyrn2vSQfPjAGkXnlOgUVwE.Libu6qvYHaVzo8GkhWUXJ8pdC', 'default-avatar.png', 'user', 'active', '2026-08-11 18:25:20', '2026-08-11 18:26:40', 'regular', 75, 1, 0),
+(24, 'FIBER IDOOM', 'yaserzawbaaa56@gmail.com', NULL, NULL, '$2y$10$iGhKwX/rd6i05PXfbHB65OcLTdEWb01pl2HNYR5NwaTNyHTUtWZcG', 'default-avatar.png', 'user', 'active', '2026-08-12 13:57:12', '2026-08-17 15:40:39', 'vip', 105, 2, 0),
+(25, 'AbdelhakAissaoui', 'ythako72@gmail.com', NULL, NULL, '$2y$10$wcC2ODrt.srt.DbFS.vLQ.1HS.D1EVKusjsp98aUFPcpjaY33e88m', 'default-avatar.png', 'user', 'active', '2026-08-18 17:07:35', '2026-08-18 17:07:35', 'regular', 0, 1, 0),
+(26, 'kyou', 'hako.aissaoui29@gmail.com', NULL, NULL, '$2y$10$xfuFfzJc3TcHm0f5HzrmvOVdDKXTpZ.372w.DPjdnF8xzZ.yEUM7a', 'default-avatar.png', 'user', 'active', '2026-08-19 13:30:08', '2026-08-19 13:30:08', 'regular', 0, 1, 0),
+(27, 'chatgpt', 'aze@yuki.com', NULL, NULL, '$2y$10$pWLLcp3mrd2CkVoHqLzUouGoFBCLD6GEpkrt7Bbdn5zxsOI5/iG7O', 'default-avatar.png', 'user', 'active', '2026-08-20 14:30:35', '2026-08-20 14:34:22', 'regular', 0, 1, 0);
+
+INSERT INTO "ranks" ("id", "slug", "title", "description", "badge_icon", "xp_reward") VALUES
+(1, 'spotlight_starter', 'مُستكشف الشاشة', 'وصل إلى 100 XP في منصة Yuki', 'fa-film', 25),
+(2, 'night_marathoner', 'ساهر الليالي', 'شاهد 3 أفلام متتالية في وقت متأخر', 'fa-moon', 40),
+(3, 'critics_choice', 'الناقد الذهبي', 'شارَك بـ 5 مراجعات وتفاعلات على الأعمال', 'fa-star', 50),
+(4, 'yuki_legend', 'أسطورة Yuki', 'وصل إلى 1000 XP وأصبح من كبار المشاهدين', 'fa-crown', 100);
+
+INSERT INTO "badges" ("id", "code_name", "title", "description", "icon", "points_reward") VALUES
+(1, 'founder', 'عضو مؤسس', 'يُمنح للأعضاء الأوائل في منصة Yuki', 'fa-crown', 100),
+(2, 'active_watcher', 'مشاهد نشط', 'يُمنح لمن تابع العديد من الحلقات والأفلام', 'fa-fire', 50),
+(3, 'comment_pro', 'معلق مميز', 'يُمنح للأعضاء المتفاعلين في قسم التعليقات', 'fa-star', 30),
+(4, 'collector', 'جامع الأوسمة', 'يُمنح للأعضاء الذين جمعوا إنجازات متعددة', 'fa-trophy', 150);
+
+INSERT INTO "settings" ("id", "setting_key", "setting_value", "created_at", "updated_at") VALUES
+(1, 'site_name', 'Yuki', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
+(2, 'site_description', 'منصة Yuki للبث السينمائي', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
+(3, 'site_logo', 'logo.png', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
+(4, 'facebook_url', 'https://www.facebook.com/kyou.online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
+(5, 'instagram_url', 'https://www.instagram.com/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
+(6, 'telegram_url', 'https://t.me/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:11:14'),
+(7, 'twitter_url', 'https://x.com/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
+(8, 'maintenance_mode', '0', '2026-06-27 16:18:54', '2026-07-10 16:47:21'),
+(9, 'allow_registration', '1', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
+(10, 'default_server', 'streamhg', '2026-06-27 16:18:54', '2026-06-27 16:18:54');
 
 INSERT INTO "content" ("id", "title", "slug", "description", "type", "category_id", "genre_id", "poster", "backdrop", "trailer", "rating", "year", "duration", "quality", "views", "status", "featured", "created_at", "updated_at") VALUES
 (5, 'Avatar 3 Fire and Ash 2025', 'avatar-3-fire-and-ash-2025', 'تواجه عائلة جيك ونيتيري الحزن بعد وفاة نيتيام، وتلتقي بقبيلة نافي جديدة وعدائية تُدعى (شعب الرماد)، بقيادة المحاربة النارية فارانج، بينما يتصاعد الصراع على كوكب باندورا وتظهر قضايا أخلاقية جديدة في قلب الأحداث.', 'movie', 1, NULL, '6a1a1387ee053.jpg', '', '', '7.2', 2025, 197, 'HD', 24, 'published', 0, '2026-05-29 22:28:38', '2026-07-24 08:28:25');
+
 INSERT INTO "content" ("id", "title", "slug", "description", "type", "category_id", "genre_id", "poster", "backdrop", "trailer", "rating", "year", "duration", "quality", "views", "status", "featured", "created_at", "updated_at") VALUES
 (94, '! Teen Titans Go', 'teen-titans-go', '', 'series', 5, 3, '6a58ec4168685.jpg', '', '', '0.0', 2013, NULL, 'HD', 0, 'published', 0, '2026-07-16 14:35:45', '2026-07-16 14:35:45'),
 (95, 'Our Last Crusade or the Rise of a New World', 'our-last-crusade-or-the-rise-of-a-new-world', '', 'series', 3, 7, '6a58ecf7407c9.jpg', '', '', '0.0', 2020, NULL, 'HD', 3, 'published', 0, '2026-07-16 14:38:47', '2026-07-16 15:27:15'),
@@ -448,126 +471,6 @@ INSERT INTO "episodes" ("id", "series_id", "season", "episode_number", "title", 
 (95, 254, 1, 50, 'الحلقة  50', '', 24, '', 0, '2026-08-23 16:47:39'),
 (96, 254, 1, 51, 'الحلقة  51', '', 24, '', 0, '2026-08-23 16:48:12'),
 (97, 254, 1, 52, 'الحلقة  52  الاخيره', '', 24, '', 0, '2026-08-23 16:49:07');
-
-INSERT INTO "episode_servers" ("id", "episode_id", "server_name", "embed_url", "quality", "is_default", "created_at") VALUES
-(58, 46, 'doodstream', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2002-1_412767268208.mp4', 'HD', 1, '2026-08-23 16:03:52'),
-(59, 47, 'doodstream', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2003-1_393748249189.mp4', 'HD', 1, '2026-08-23 16:04:55'),
-(61, 49, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2005-1_407762263203.mp4', 'HD', 1, '2026-08-23 16:07:22'),
-(62, 50, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2001-1_395750251191.mp4', 'HD', 1, '2026-08-23 16:07:53'),
-(63, 48, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2004-1_409764265205.mp4', 'HD', 1, '2026-08-23 16:08:11'),
-(64, 51, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2006-1_415770271211.mp4', 'HD', 1, '2026-08-23 16:09:06'),
-(65, 52, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2007-1_423778279219.mp4', 'HD', 1, '2026-08-23 16:09:48'),
-(66, 53, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2008-1_405760261201.mp4', 'HD', 1, '2026-08-23 16:10:33'),
-(67, 54, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2009-1_404759260200.mp4', 'HD', 1, '2026-08-23 16:11:21'),
-(68, 55, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2010-1_414769270210.mp4', 'HD', 1, '2026-08-23 16:12:11'),
-(69, 56, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_11_403758259199.mp4', 'HD', 1, '2026-08-23 16:15:15'),
-(70, 57, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_12_406761262202.mp4', 'HD', 1, '2026-08-23 16:15:57'),
-(71, 58, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_13_384739240180.mp4', 'HD', 1, '2026-08-23 16:16:31'),
-(72, 59, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_14_380735236176.mp4', 'HD', 1, '2026-08-23 16:17:14'),
-(73, 60, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_15_382737238178.mp4', 'HD', 1, '2026-08-23 16:17:54'),
-(74, 61, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_16_381736237177.mp4', 'HD', 1, '2026-08-23 16:18:42'),
-(75, 62, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_17_416771272212.mp4', 'HD', 1, '2026-08-23 16:19:21'),
-(76, 63, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_18_424779280220.mp4', 'HD', 1, '2026-08-23 16:21:56'),
-(77, 64, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_19_386741242182.mp4', 'HD', 1, '2026-08-23 16:22:43'),
-(78, 65, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_20_397752253193.mp4', 'HD', 1, '2026-08-23 16:23:25'),
-(79, 66, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_21_426781282222.mp4', 'HD', 1, '2026-08-23 16:24:32'),
-(80, 67, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_22_385740241181.mp4', 'HD', 1, '2026-08-23 16:25:11'),
-(81, 68, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_23_421776277217.mp4', 'HD', 1, '2026-08-23 16:25:51'),
-(82, 69, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_24_425780281221.mp4', 'HD', 1, '2026-08-23 16:26:32'),
-(83, 70, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_25_411766267207.mp4', 'HD', 1, '2026-08-23 16:29:23'),
-(84, 71, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_26_392747248188.mp4', 'HD', 1, '2026-08-23 16:30:07'),
-(85, 72, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_27_420775276216.mp4', 'HD', 1, '2026-08-23 16:30:42'),
-(86, 73, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_28_400755256196.mp4', 'HD', 1, '2026-08-23 16:31:26'),
-(87, 74, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_29_427782283223.mp4', 'HD', 1, '2026-08-23 16:32:36'),
-(88, 75, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_30_429784285225.mp4', 'HD', 1, '2026-08-23 16:33:09'),
-(89, 76, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_31_428783284224.mp4', 'HD', 1, '2026-08-23 16:33:46'),
-(90, 77, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_32_387742243183.mp4', 'HD', 1, '2026-08-23 16:35:03'),
-(91, 78, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_33_383738239179.mp4', 'HD', 1, '2026-08-23 16:37:08'),
-(92, 79, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_34_413768269209.mp4', 'HD', 1, '2026-08-23 16:38:04'),
-(93, 80, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_35_401756257197.mp4', 'HD', 1, '2026-08-23 16:38:32'),
-(94, 81, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_36_419774275215.mp4', 'HD', 1, '2026-08-23 16:39:16'),
-(95, 82, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_37_422777278218.mp4', 'HD', 1, '2026-08-23 16:39:49'),
-(96, 83, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_38_417772273213.mp4', 'HD', 1, '2026-08-23 16:40:17'),
-(97, 84, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_39_398753254194.mp4', 'HD', 1, '2026-08-23 16:40:53'),
-(98, 85, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_40_389744245185.mp4', 'HD', 1, '2026-08-23 16:41:32'),
-(99, 86, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_41_410765266206.mp4', 'HD', 1, '2026-08-23 16:42:20'),
-(100, 87, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_42_418773274214.mp4', 'HD', 1, '2026-08-23 16:42:54'),
-(101, 88, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_43_394749250190.mp4', 'HD', 1, '2026-08-23 16:43:27'),
-(102, 89, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_44_399754255195.mp4', 'HD', 1, '2026-08-23 16:44:02'),
-(103, 90, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_45_391746247187.mp4', 'HD', 1, '2026-08-23 16:44:43'),
-(104, 91, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_46_408763264204.mp4', 'HD', 1, '2026-08-23 16:45:22'),
-(105, 92, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_47_378733234174.mp4', 'HD', 1, '2026-08-23 16:45:53'),
-(106, 93, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_48_402757258198.mp4', 'HD', 1, '2026-08-23 16:46:25'),
-(107, 94, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_49_379734235175.mp4', 'HD', 1, '2026-08-23 16:47:10'),
-(108, 95, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_50_390745246186.mp4', 'HD', 1, '2026-08-23 16:47:39'),
-(109, 96, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_51_388743244184.mp4', 'HD', 1, '2026-08-23 16:48:12'),
-(110, 97, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_52_396751252192.mp4', 'HD', 1, '2026-08-23 16:49:07');
-
-INSERT INTO "favorites" ("id", "user_id", "content_id", "created_at") VALUES
-(12, 1, 31, '2026-07-12 16:09:58'),
-(13, 1, 6, '2026-07-12 20:02:47'),
-(15, 1, 107, '2026-07-17 10:50:49'),
-(16, 1, 114, '2026-07-20 21:04:30'),
-(17, 1, 116, '2026-07-21 18:32:17'),
-(18, 1, 5, '2026-07-22 13:55:33'),
-(19, 1, 115, '2026-07-26 15:36:41'),
-(20, 1, 138, '2026-07-28 10:59:15'),
-(21, 1, 149, '2026-07-28 13:36:39'),
-(22, 1, 181, '2026-08-05 14:36:38'),
-(23, 1, 131, '2026-08-07 13:50:58'),
-(24, 1, 9, '2026-08-08 15:37:27');
-
-INSERT INTO "genres" ("id", "name", "slug", "created_at") VALUES
-(1, 'أكشن', 'action', '2026-06-27 16:18:54'),
-(2, 'دراما', 'drama', '2026-06-27 16:18:54'),
-(3, 'كوميديا', 'comedy', '2026-06-27 16:18:54'),
-(4, 'رعب', 'horror', '2026-06-27 16:18:54'),
-(5, 'خيال علمي', 'sci-fi', '2026-06-27 16:18:54'),
-(6, 'إثارة', 'thriller', '2026-06-27 16:18:54'),
-(7, 'رومانسي', 'romance', '2026-06-27 16:18:54'),
-(8, 'مغامرة', 'adventure', '2026-06-27 16:18:54'),
-(9, 'جريمة', 'crime', '2026-06-27 16:18:54'),
-(10, 'عائلي', 'family', '2026-06-27 16:18:54');
-
-INSERT INTO "ranks" ("id", "slug", "title", "description", "badge_icon", "xp_reward") VALUES
-(1, 'spotlight_starter', 'مُستكشف الشاشة', 'وصل إلى 100 XP في منصة Yuki', 'fa-film', 25),
-(2, 'night_marathoner', 'ساهر الليالي', 'شاهد 3 أفلام متتالية في وقت متأخر', 'fa-moon', 40),
-(3, 'critics_choice', 'الناقد الذهبي', 'شارَك بـ 5 مراجعات وتفاعلات على الأعمال', 'fa-star', 50),
-(4, 'yuki_legend', 'أسطورة Yuki', 'وصل إلى 1000 XP وأصبح من كبار المشاهدين', 'fa-crown', 100);
-
-INSERT INTO "ratings" ("id", "content_id", "user_id", "rating") VALUES
-(5, 69, 1, 5);
-
-INSERT INTO "settings" ("id", "setting_key", "setting_value", "created_at", "updated_at") VALUES
-(1, 'site_name', 'Yuki', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
-(2, 'site_description', 'منصة Yuki للبث السينمائي', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
-(3, 'site_logo', 'logo.png', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
-(4, 'facebook_url', 'https://www.facebook.com/kyou.online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
-(5, 'instagram_url', 'https://www.instagram.com/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
-(6, 'telegram_url', 'https://t.me/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:11:14'),
-(7, 'twitter_url', 'https://x.com/kyou_online', '2026-06-27 16:18:54', '2026-08-24 22:09:15'),
-(8, 'maintenance_mode', '0', '2026-06-27 16:18:54', '2026-07-10 16:47:21'),
-(9, 'allow_registration', '1', '2026-06-27 16:18:54', '2026-06-27 16:18:54'),
-(10, 'default_server', 'streamhg', '2026-06-27 16:18:54', '2026-06-27 16:18:54');
-
-INSERT INTO "users" ("id", "username", "email", "google_id", "facebook_id", "password", "avatar", "role", "status", "created_at", "updated_at", "membership_type", "xp", "level", "points") VALUES
-(1, 'Yuki', 'aissaoui.abdelhak.29@gmail.com', NULL, NULL, '$2y$10$4QjOums2YiDzONuzDj9lyezZtSRqv.Olbfq1dujjHRiIBB9JwFyye', '6a4126e1db4c4.jpg', 'admin', 'active', '2026-06-27 16:18:54', '2026-08-25 10:20:46', 'vip', 10003674, 100037, 9999999),
-(10, 'Yas', 'yasserhalawa22@gmail.com', NULL, NULL, '$2y$10$XnKvs38XHJ5qxGYcjOAC3OHHt1Z26BZxAcOlbup7AoklbU4kEdFp2', '6a64f02c6067a.webp', 'user', 'active', '2026-07-25 17:19:17', '2026-07-27 15:39:47', 'vip', 0, 1, 0),
-(20, 'BAYZA HACKER', 'hakim112254@gmail.com', NULL, NULL, '$2y$10$OpwQLv9BSJqUHjuRZDcTB.n5mL1OwEZfBRl6hjD1evWPpwtHUQYTO', 'default-avatar.png', 'user', 'active', '2026-08-05 13:59:03', '2026-08-17 15:41:14', 'vip', 90, 1, 0),
-(23, 'user', 'skir.skir.2900@gmail.com', NULL, NULL, '$2y$10$bEB0gyrn2vSQfPjAGkXnlOgUVwE.Libu6qvYHaVzo8GkhWUXJ8pdC', 'default-avatar.png', 'user', 'active', '2026-08-11 18:25:20', '2026-08-11 18:26:40', 'regular', 75, 1, 0),
-(24, 'FIBER IDOOM', 'yaserzawbaaa56@gmail.com', NULL, NULL, '$2y$10$iGhKwX/rd6i05PXfbHB65OcLTdEWb01pl2HNYR5NwaTNyHTUtWZcG', 'default-avatar.png', 'user', 'active', '2026-08-12 13:57:12', '2026-08-17 15:40:39', 'vip', 105, 2, 0),
-(25, 'AbdelhakAissaoui', 'ythako72@gmail.com', NULL, NULL, '$2y$10$wcC2ODrt.srt.DbFS.vLQ.1HS.D1EVKusjsp98aUFPcpjaY33e88m', 'default-avatar.png', 'user', 'active', '2026-08-18 17:07:35', '2026-08-18 17:07:35', 'regular', 0, 1, 0),
-(26, 'kyou', 'hako.aissaoui29@gmail.com', NULL, NULL, '$2y$10$xfuFfzJc3TcHm0f5HzrmvOVdDKXTpZ.372w.DPjdnF8xzZ.yEUM7a', 'default-avatar.png', 'user', 'active', '2026-08-19 13:30:08', '2026-08-19 13:30:08', 'regular', 0, 1, 0),
-(27, 'chatgpt', 'aze@yuki.com', NULL, NULL, '$2y$10$pWLLcp3mrd2CkVoHqLzUouGoFBCLD6GEpkrt7Bbdn5zxsOI5/iG7O', 'default-avatar.png', 'user', 'active', '2026-08-20 14:30:35', '2026-08-20 14:34:22', 'regular', 0, 1, 0);
-
-INSERT INTO "user_achievements" ("id", "user_id", "rank_id", "unlocked_at") VALUES
-(9, 1, 1, '2026-07-26 08:10:12'),
-(10, 1, 2, '2026-07-26 08:10:12'),
-(11, 1, 3, '2026-07-26 08:10:12'),
-(12, 1, 4, '2026-07-26 08:10:12');
-
-INSERT INTO "user_tokens" ("id", "user_id", "token", "expires_at") VALUES
-(23, 1, '47ef0b99ecc23e4f89006d8aa629e01875bcf3dc249f1a4225102ff9e2a7eb52', '2026-09-25 07:03:04');
 
 INSERT INTO "video_servers" ("id", "content_id", "server_name", "embed_url", "quality", "is_default", "created_at") VALUES
 (67, 19, 'mixdrop', 'https://streamimdb.ru/embed/movie/tt0068646', 'HD', 1, '2026-06-27 16:44:28'),
@@ -819,6 +722,86 @@ INSERT INTO "video_servers" ("id", "content_id", "server_name", "embed_url", "qu
 (593, 41, 'streamhg', 'https://streamimdb.ru/embed/tv/124364/1', 'HD', 1, '2026-08-24 10:48:28'),
 (594, 232, 'streamhg', 'https://streamimdb.ru/embed/tv/8358/1', 'HD', 1, '2026-08-26 11:03:34');
 
+INSERT INTO "episode_servers" ("id", "episode_id", "server_name", "embed_url", "quality", "is_default", "created_at") VALUES
+(58, 46, 'doodstream', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2002-1_412767268208.mp4', 'HD', 1, '2026-08-23 16:03:52'),
+(59, 47, 'doodstream', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2003-1_393748249189.mp4', 'HD', 1, '2026-08-23 16:04:55'),
+(61, 49, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2005-1_407762263203.mp4', 'HD', 1, '2026-08-23 16:07:22'),
+(62, 50, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2001-1_395750251191.mp4', 'HD', 1, '2026-08-23 16:07:53'),
+(63, 48, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2004-1_409764265205.mp4', 'HD', 1, '2026-08-23 16:08:11'),
+(64, 51, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2006-1_415770271211.mp4', 'HD', 1, '2026-08-23 16:09:06'),
+(65, 52, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2007-1_423778279219.mp4', 'HD', 1, '2026-08-23 16:09:48'),
+(66, 53, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2008-1_405760261201.mp4', 'HD', 1, '2026-08-23 16:10:33'),
+(67, 54, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2009-1_404759260200.mp4', 'HD', 1, '2026-08-23 16:11:21'),
+(68, 55, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto%20S1%2010-1_414769270210.mp4', 'HD', 1, '2026-08-23 16:12:11'),
+(69, 56, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_11_403758259199.mp4', 'HD', 1, '2026-08-23 16:15:15'),
+(70, 57, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_12_406761262202.mp4', 'HD', 1, '2026-08-23 16:15:57'),
+(71, 58, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_13_384739240180.mp4', 'HD', 1, '2026-08-23 16:16:31'),
+(72, 59, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_14_380735236176.mp4', 'HD', 1, '2026-08-23 16:17:14'),
+(73, 60, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_15_382737238178.mp4', 'HD', 1, '2026-08-23 16:17:54'),
+(74, 61, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_16_381736237177.mp4', 'HD', 1, '2026-08-23 16:18:42'),
+(75, 62, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_17_416771272212.mp4', 'HD', 1, '2026-08-23 16:19:21'),
+(76, 63, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_18_424779280220.mp4', 'HD', 1, '2026-08-23 16:21:56'),
+(77, 64, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_19_386741242182.mp4', 'HD', 1, '2026-08-23 16:22:43'),
+(78, 65, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_20_397752253193.mp4', 'HD', 1, '2026-08-23 16:23:25'),
+(79, 66, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_21_426781282222.mp4', 'HD', 1, '2026-08-23 16:24:32'),
+(80, 67, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_22_385740241181.mp4', 'HD', 1, '2026-08-23 16:25:11'),
+(81, 68, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_23_421776277217.mp4', 'HD', 1, '2026-08-23 16:25:51'),
+(82, 69, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_24_425780281221.mp4', 'HD', 1, '2026-08-23 16:26:32'),
+(83, 70, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_25_411766267207.mp4', 'HD', 1, '2026-08-23 16:29:23'),
+(84, 71, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_26_392747248188.mp4', 'HD', 1, '2026-08-23 16:30:07'),
+(85, 72, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_27_420775276216.mp4', 'HD', 1, '2026-08-23 16:30:42'),
+(86, 73, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_28_400755256196.mp4', 'HD', 1, '2026-08-23 16:31:26'),
+(87, 74, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_29_427782283223.mp4', 'HD', 1, '2026-08-23 16:32:36'),
+(88, 75, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_30_429784285225.mp4', 'HD', 1, '2026-08-23 16:33:09'),
+(89, 76, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_31_428783284224.mp4', 'HD', 1, '2026-08-23 16:33:46'),
+(90, 77, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_32_387742243183.mp4', 'HD', 1, '2026-08-23 16:35:03'),
+(91, 78, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_33_383738239179.mp4', 'HD', 1, '2026-08-23 16:37:08'),
+(92, 79, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_34_413768269209.mp4', 'HD', 1, '2026-08-23 16:38:04'),
+(93, 80, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_35_401756257197.mp4', 'HD', 1, '2026-08-23 16:38:32'),
+(94, 81, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_36_419774275215.mp4', 'HD', 1, '2026-08-23 16:39:16'),
+(95, 82, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_37_422777278218.mp4', 'HD', 1, '2026-08-23 16:39:49'),
+(96, 83, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_38_417772273213.mp4', 'HD', 1, '2026-08-23 16:40:17'),
+(97, 84, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_39_398753254194.mp4', 'HD', 1, '2026-08-23 16:40:53'),
+(98, 85, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_40_389744245185.mp4', 'HD', 1, '2026-08-23 16:41:32'),
+(99, 86, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_41_410765266206.mp4', 'HD', 1, '2026-08-23 16:42:20'),
+(100, 87, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_42_418773274214.mp4', 'HD', 1, '2026-08-23 16:42:54'),
+(101, 88, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_43_394749250190.mp4', 'HD', 1, '2026-08-23 16:43:27'),
+(102, 89, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_44_399754255195.mp4', 'HD', 1, '2026-08-23 16:44:02'),
+(103, 90, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_45_391746247187.mp4', 'HD', 1, '2026-08-23 16:44:43'),
+(104, 91, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_46_408763264204.mp4', 'HD', 1, '2026-08-23 16:45:22'),
+(105, 92, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_47_378733234174.mp4', 'HD', 1, '2026-08-23 16:45:53'),
+(106, 93, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_48_402757258198.mp4', 'HD', 1, '2026-08-23 16:46:25'),
+(107, 94, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_49_379734235175.mp4', 'HD', 1, '2026-08-23 16:47:10'),
+(108, 95, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_50_390745246186.mp4', 'HD', 1, '2026-08-23 16:47:39'),
+(109, 96, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_51_388743244184.mp4', 'HD', 1, '2026-08-23 16:48:12'),
+(110, 97, 'streamhg', 'https://serv1.servallvid.com/files/Anime/naruto/AR/1/Naruto_AR_S1_Ep_52_396751252192.mp4', 'HD', 1, '2026-08-23 16:49:07');
+
+INSERT INTO "comments" ("id", "user_id", "item_id", "comment_text", "likes_count", "created_at") VALUES
+(20, 1, 6, 'Hi', 1, '2026-07-26 16:18:10'),
+(10, 9, 31, 'اهلين', 2, '2026-07-12 16:28:56'),
+(8, 1, 31, 'هلا', 2, '2026-07-12 16:06:54'),
+(15, 1, 107, 'اععععععععععععععععععععععععع', 1, '2026-07-17 10:55:30'),
+(16, 9, 72, 'jjjjj', 0, '2026-07-19 17:31:51'),
+(17, 1, 114, 'you', 0, '2026-07-21 17:11:57'),
+(22, 1, 255, 'Alpha', 1, '2026-08-23 20:12:44');
+
+INSERT INTO "ratings" ("id", "content_id", "user_id", "rating") VALUES
+(5, 69, 1, 5);
+
+INSERT INTO "favorites" ("id", "user_id", "content_id", "created_at") VALUES
+(12, 1, 31, '2026-07-12 16:09:58'),
+(13, 1, 6, '2026-07-12 20:02:47'),
+(15, 1, 107, '2026-07-17 10:50:49'),
+(16, 1, 114, '2026-07-20 21:04:30'),
+(17, 1, 116, '2026-07-21 18:32:17'),
+(18, 1, 5, '2026-07-22 13:55:33'),
+(19, 1, 115, '2026-07-26 15:36:41'),
+(20, 1, 138, '2026-07-28 10:59:15'),
+(21, 1, 149, '2026-07-28 13:36:39'),
+(22, 1, 181, '2026-08-05 14:36:38'),
+(23, 1, 131, '2026-08-07 13:50:58'),
+(24, 1, 9, '2026-08-08 15:37:27');
+
 INSERT INTO "watch_history" ("id", "user_id", "content_id", "episode_id", "progress", "watched_at") VALUES
 (1, 1, 115, NULL, 0, '2026-07-26 16:14:50'),
 (2, 1, 81, NULL, 0, '2026-07-26 16:15:00'),
@@ -896,25 +879,60 @@ INSERT INTO "watch_history" ("id", "user_id", "content_id", "episode_id", "progr
 (78, 1, 117, NULL, 0, '2026-08-24 14:39:39'),
 (79, 1, 148, NULL, 0, '2026-08-24 14:39:45');
 
+INSERT INTO "user_achievements" ("id", "user_id", "rank_id", "unlocked_at") VALUES
+(9, 1, 1, '2026-07-26 08:10:12'),
+(10, 1, 2, '2026-07-26 08:10:12'),
+(11, 1, 3, '2026-07-26 08:10:12'),
+(12, 1, 4, '2026-07-26 08:10:12');
+
+INSERT INTO "user_tokens" ("id", "user_id", "token", "expires_at") VALUES
+(23, 1, '47ef0b99ecc23e4f89006d8aa629e01875bcf3dc249f1a4225102ff9e2a7eb52', '2026-09-25 07:03:04');
+
+INSERT INTO "comment_likes" ("id", "user_id", "comment_id", "created_at") VALUES
+(6, 9, 8, '2026-07-12 16:07:54'),
+(10, 1, 8, '2026-07-12 16:30:51'),
+(8, 9, 10, '2026-07-12 16:29:09'),
+(9, 1, 10, '2026-07-12 16:30:48'),
+(12, 1, 11, '2026-07-12 20:01:48'),
+(13, 1, 15, '2026-07-17 10:55:36'),
+(14, 1, 20, '2026-07-26 16:18:22'),
+(17, 1, 22, '2026-08-23 20:12:56');
 
 -- Reset PostgreSQL sequences after importing explicit IDs
 SELECT setval(pg_get_serial_sequence('badges','id'), COALESCE((SELECT MAX(id) FROM badges), 1), true);
+
 SELECT setval(pg_get_serial_sequence('categories','id'), COALESCE((SELECT MAX(id) FROM categories), 1), true);
+
 SELECT setval(pg_get_serial_sequence('comments','id'), COALESCE((SELECT MAX(id) FROM comments), 1), true);
+
 SELECT setval(pg_get_serial_sequence('comment_likes','id'), COALESCE((SELECT MAX(id) FROM comment_likes), 1), true);
+
 SELECT setval(pg_get_serial_sequence('content','id'), COALESCE((SELECT MAX(id) FROM content), 1), true);
+
 SELECT setval(pg_get_serial_sequence('episodes','id'), COALESCE((SELECT MAX(id) FROM episodes), 1), true);
+
 SELECT setval(pg_get_serial_sequence('episode_servers','id'), COALESCE((SELECT MAX(id) FROM episode_servers), 1), true);
+
 SELECT setval(pg_get_serial_sequence('favorites','id'), COALESCE((SELECT MAX(id) FROM favorites), 1), true);
+
 SELECT setval(pg_get_serial_sequence('genres','id'), COALESCE((SELECT MAX(id) FROM genres), 1), true);
+
 SELECT setval(pg_get_serial_sequence('ranks','id'), COALESCE((SELECT MAX(id) FROM ranks), 1), true);
+
 SELECT setval(pg_get_serial_sequence('ratings','id'), COALESCE((SELECT MAX(id) FROM ratings), 1), true);
+
 SELECT setval(pg_get_serial_sequence('settings','id'), COALESCE((SELECT MAX(id) FROM settings), 1), true);
+
 SELECT setval(pg_get_serial_sequence('users','id'), COALESCE((SELECT MAX(id) FROM users), 1), true);
+
 SELECT setval(pg_get_serial_sequence('user_achievements','id'), COALESCE((SELECT MAX(id) FROM user_achievements), 1), true);
+
 SELECT setval(pg_get_serial_sequence('user_tokens','id'), COALESCE((SELECT MAX(id) FROM user_tokens), 1), true);
+
 SELECT setval(pg_get_serial_sequence('video_servers','id'), COALESCE((SELECT MAX(id) FROM video_servers), 1), true);
+
 SELECT setval(pg_get_serial_sequence('watch_history','id'), COALESCE((SELECT MAX(id) FROM watch_history), 1), true);
+
 SELECT setval(pg_get_serial_sequence('xp_logs','id'), COALESCE((SELECT MAX(id) FROM xp_logs), 1), true);
 
 COMMIT;
