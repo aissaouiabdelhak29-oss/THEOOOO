@@ -1,7 +1,6 @@
+# api/install.php
 
 <?php
-declare(strict_types=1);
-
 header('Content-Type: text/plain; charset=utf-8');
 
 require_once __DIR__ . '/../includes/db.php';
@@ -55,20 +54,9 @@ INSERT INTO genres (name) VALUES
 ('خيال علمي');
 
 INSERT INTO content (
-    title,
-    slug,
-    type,
-    description,
-    year,
-    duration,
-    rating,
-    quality,
-    views,
-    category_id,
-    genre_id,
-    status,
-    featured,
-    poster
+    title, slug, type, description, year, duration,
+    rating, quality, views, category_id, genre_id,
+    status, featured, poster
 )
 VALUES
 (
@@ -103,7 +91,6 @@ VALUES
     TRUE,
     NULL
 );
-
 ";
 
 try {
