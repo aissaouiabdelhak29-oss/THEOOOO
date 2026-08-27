@@ -1,6 +1,5 @@
-# api/install.php
 
-```php
+
 <?php
 declare(strict_types=1);
 
@@ -118,4 +117,3 @@ try {
 } catch (PDOException $e) {
     echo "ERROR: " . $e->getMessage() . "\n";
 }
-```
